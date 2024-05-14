@@ -1,4 +1,3 @@
-
 <template>
   <div class="home-container">
     Home
@@ -8,5 +7,9 @@
 <style type="scss" scoped>
 .home-container {
   background-color: white;
+}
+.time-series-container {
+  margin: 0 auto;
+  width: 75vw;
 }
 </style>

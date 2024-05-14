@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from 'vue-router'
 import HomePage from '@/pages/HomePage.vue'
 import NotFound from '@/pages/NotFound.vue'
+import TimeSeriesPage from '@/pages/TimeSeriesPage.vue'
 import TopStocksPage from '@/pages/TopStocksPage.vue'
 
 const routes = [
@@ -18,6 +19,11 @@ const routes = [
     path: '/top-stocks',
     name: 'TopStocks',
     component: TopStocksPage,
+  },
+  {
+    path: '/time-series/:stockSymbol',
+    name: 'TimeSeries',
+    component: TimeSeriesPage,
   },
 ]
 

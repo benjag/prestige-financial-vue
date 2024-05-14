@@ -1,21 +1,24 @@
 <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { getTopStocks } from '@/api/getTopStocks'
 import TopStocksItem from '@/components/TopStocksItem.vue'
 import TopStocksSummaryItem from '@/components/TopStocksSummaryItem.vue'
+
+const router = useRouter()
 
 const topStocks = ref(null)
 const totalMarketCap = getKeySum('market_cap')
 const minPriceFilter = ref(0)
 
 function getKeySum(key: string): number {
-  return topStocks.value.reduce((acc, cur) => {
+  return topStocks.value?.reduce((acc, cur) => {
     return acc + cur[key]
   }, 0)
 }
 
-function getOldestAndNewestIPOs(): string {
-  const stocksSorted = topStocks.value.toSorted((a, b) => {
+function getOldestAndNewestIPOs(): string|array {
+  const stocksSorted = topStocks.value?.toSorted((a, b) => {
     return a.ipo.getTime() - b.ipo.getTime()
   }) ?? []
 

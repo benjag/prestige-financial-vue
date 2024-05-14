@@ -35,6 +35,15 @@ onMounted(() => {
       <div class="app-parent__header-logo">
         <img src="@/assets/logo.png"> Prestige Financial Solutions
       </div>
+      <div class="app-parent__header-logout">
+        <button
+          v-if="mainStore.currentUser"
+          type="button"
+          @click="mainStore.logout()"
+        >
+          Logout
+        </button>
+      </div>
     </header>
 
     <div id="sign-in-area" class="app-parent__sign-in-area" />
@@ -47,7 +56,10 @@ onMounted(() => {
       <div v-if="mainStore.currentUser" class="app-parent__current-user">
         currently logged in user: {{ mainStore.currentUser.email }}
       </div>
-      <router-view v-if="mainStore.currentUser" class="app-parent__router-view" />
+      <router-view
+        v-if="mainStore.currentUser"
+        class="app-parent__router-view"
+      />
       <LoginPage v-else class="app-parent__login-page" />
     </main>
 
@@ -87,6 +99,11 @@ body {
     height: 100px;
   }
 }
+.app-parent__header {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
 
 .app-parent__header-logo {
   img {
@@ -95,6 +112,10 @@ body {
   }
 }
 
+.app-parent__header-logout {
+  display: flex;
+  align-self: center;
+}
 
 .app-parent {
   display: flex;
